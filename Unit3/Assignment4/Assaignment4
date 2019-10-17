@@ -1,0 +1,45 @@
+import java.util.Scanner;
+import java.lang.Math;
+import java.io.*;
+
+class Main {
+    public static void main(String[] args){
+        
+        int i;
+        char prv = ' ';
+        int vow = 0;
+        int dub = 0;
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Type the message to be shortened");
+        
+        String msg = scan.nextLine();
+        
+        if (msg.length() < 10 || msg == "No shortening needed") {
+          System.out.println("This doesn’t need shortening!");
+        }
+        else {
+          msg = msg.toLowerCase();
+        
+        
+        System.out.print("\nShortened message: ");
+        
+        for (i = 0; i < msg.length(); i++) {
+          
+          if (msg.charAt(i) != ('a') && msg.charAt(i) != ('e') && msg.charAt(i) != ('i') && msg.charAt(i) != ('o') && msg.charAt(i) != ('u') || prv == ' ') {
+            if (prv != msg.charAt(i))
+              System.out.print(msg.charAt(i));
+            else
+              dub++;
+          }   
+          else {
+            vow++;
+          }
+          prv = msg.charAt(i);
+        }
+        System.out.println("\nRepeated letters removed: " + dub);
+        System.out.println("Vowels removed: " + vow);
+        System.out.println("Total characters saved: " + (dub + vow));
+        }
+    }
+}
